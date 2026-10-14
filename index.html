@@ -3,713 +3,462 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Eslam | Flutter Developer & Backend Engineer</title>
-  <meta name="description" content="Portfolio of Eslam, a Flutter Developer and Backend Engineer specialized in mobile apps and NestJS APIs." />
+  <title>Islam Sayed — Flutter Developer & Backend Engineer</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #0b1020;
-      --bg-2: #121b2d;
-      --panel: rgba(17, 24, 39, 0.75);
-      --line: rgba(148, 163, 184, 0.18);
-      --line-soft: rgba(148, 163, 184, 0.1);
-      --text: #e5eefc;
-      --muted: #9aa7bd;
-      --muted-soft: #bcc7d8;
-      --primary: #7c8cff;
-      --primary-2: #5de4ff;
-      --accent: linear-gradient(135deg, #7c8cff 0%, #5de4ff 100%);
-      --shadow: rgba(3, 7, 18, 0.45);
-      --chip: rgba(255,255,255,0.03);
-      --radius: 18px;
-      --container: 1160px;
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #98a2b3;
+      --accent: #5eead4;
+      --accent-2: #60a5fa;
+      --glass: rgba(255,255,255,0.03);
+      --radius: 12px;
+      color-scheme: dark;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(124, 140, 255, 0.18), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(93, 228, 255, 0.12), transparent 28%),
-        linear-gradient(180deg, var(--bg), var(--bg-2));
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      min-height: 100vh;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071022 0%, #071827 60%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
     }
 
-    a { color: inherit; }
+    /* Container */
+    .wrap{max-width:1100px;margin:40px auto;padding:28px;}
 
-    .container {
-      width: min(var(--container), calc(100% - 32px));
-      margin: 0 auto;
+    /* Header / Nav */
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:14px;
+    }
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#04263b;font-size:18px;
+      box-shadow:0 6px 18px rgba(96,165,250,0.12), inset 0 -6px 20px rgba(0,0,0,0.15);
+    }
+    .brand h1{margin:0;font-size:16px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{
+      color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px 12px;border-radius:10px;
+    }
+    nav a:hover{color:#fff;background:var(--glass)}
+
+    /* Mobile nav toggle */
+    .nav-toggle{display:none}
+    @media (max-width:880px){
+      header{align-items:flex-start}
+      nav{display:none}
+      .nav-toggle{display:block;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:8px 10px;border-radius:8px}
     }
 
-    .page-shell {
-      padding: 32px 0 48px;
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin-bottom:28px;
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:28px;border-radius:var(--radius);backdrop-filter: blur(6px);box-shadow: 0 8px 30px rgba(2,6,23,0.7);
+    }
+    .hero h2{margin:0;font-size:28px;letter-spacing:-0.02em}
+    .hero .title{color:var(--accent-2);font-weight:700;margin-top:6px}
+    .hero p{color:var(--muted);margin:16px 0 0}
+
+    .hero-cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#012226;text-decoration:none;
+      border:0;cursor:pointer;box-shadow:0 6px 18px rgba(96,165,250,0.09);
+    }
+    .btn-outline{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:9px 12px;border-radius:10px;text-decoration:none;font-weight:700;
     }
 
-    .card {
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 22px 60px var(--shadow);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+    /* Right small card */
+    .profile{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
+      padding:18px;border-radius:var(--radius);display:flex;gap:14px;align-items:center;flex-direction:column;
+    }
+    .avatar{width:110px;height:110px;border-radius:18px;background:linear-gradient(135deg,#e6faff20,#ffd4e620);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent-2);font-size:28px}
+    .meta{width:100%;display:flex;flex-direction:column;gap:8px}
+    .meta .row{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+    .links{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:13px;color:var(--muted)}
+
+    /* Sections */
+    section{margin:28px 0;padding:22px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));box-shadow: 0 6px 18px rgba(2,6,23,0.6)}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .section-head h3{margin:0;font-size:18px}
+    .section-head p{margin:0;color:var(--muted);font-size:13px}
+
+    /* About */
+    .about{display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:start}
+    .about p{color:var(--muted);margin:0 0 14px}
+
+    /* Projects */
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .project{
+      padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.008),rgba(255,255,255,0.004));border:1px solid rgba(255,255,255,0.02);
+    }
+    .project h4{margin:0 0 6px;font-size:16px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)}
+
+    /* Skills */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .skill{
+      background:transparent;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);
+    }
+    .skill h5{margin:0 0 8px;font-size:13px}
+    .meter{height:8px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
+    .meter > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:60%}
+
+    /* Contact */
+    .contact-list{display:flex;flex-direction:column;gap:10px}
+    .contact-item{display:flex;gap:10px;align-items:center}
+    .contact-item a{color:var(--accent-2);font-weight:700;text-decoration:none}
+    .small{color:var(--muted);font-size:13px}
+
+    /* Footer */
+    footer{text-align:center;color:var(--muted);font-size:13px;margin-top:18px}
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .hero{grid-template-columns:1fr 320px}
+      .about{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:1fr}
+      .skills-grid{grid-template-columns:repeat(2,1fr)}
     }
 
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-      padding: 32px 34px;
-      position: relative;
-      overflow: hidden;
+    @media (max-width:700px){
+      .wrap{padding:18px;margin:18px auto}
+      .hero{grid-template-columns:1fr}
+      .profile{flex-direction:row;width:100%;padding:14px}
+      .avatar{width:88px;height:88px}
+      nav{display:none}
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(124, 140, 255, 0.08), transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      position: relative;
-      z-index: 1;
-      flex: 1;
-    }
-
-    .avatar {
-      width: 108px;
-      height: 108px;
-      border-radius: 26px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: var(--accent);
-      display: grid;
-      place-items: center;
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-size: 2rem;
-      letter-spacing: 0.04em;
-      color: white;
-      box-shadow: 0 20px 30px rgba(124, 140, 255, 0.25);
-      flex-shrink: 0;
-    }
-
-    .title-wrap {
-      min-width: 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.76rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--primary-2);
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary-2), var(--primary));
-      box-shadow: 0 0 18px rgba(93, 228, 255, 0.7);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      line-height: 1.05;
-      font-family: "Poppins", sans-serif;
-      letter-spacing: -0.04em;
-    }
-
-    .subtitle {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 760px;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 22px;
-    }
-
-    .chip-group {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line-soft);
-      color: var(--muted-soft);
-      font-size: 0.77rem;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-
-    .btn-primary {
-      padding: 12px 18px;
-      background: var(--accent);
-      color: white;
-      box-shadow: 0 14px 28px rgba(124, 140, 255, 0.28);
-    }
-
-    .btn-secondary {
-      padding: 11px 16px;
-      color: var(--text);
-      background: rgba(255,255,255,0.02);
-      border-color: var(--line-soft);
-    }
-
-    .content {
-      margin-top: 28px;
-      display: grid;
-      gap: 24px;
-    }
-
-    .section {
-      padding: 26px 28px;
-    }
-
-    .section-header {
-      margin: 0 0 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .section-header h2 {
-      margin: 0;
-      font-size: 1.2rem;
-      letter-spacing: -0.03em;
-      font-family: "Poppins", sans-serif;
-    }
-
-    .section-header .tag {
-      font-size: 0.72rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line-soft);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 0.9fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    .bio {
-      color: var(--muted);
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    .bio + .bio { margin-top: 14px; }
-
-    .mini-list {
-      display: grid;
-      gap: 12px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .mini-list li {
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--line-soft);
-      background: rgba(255,255,255,0.02);
-      color: var(--muted-soft);
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .project {
-      padding: 20px 18px 18px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      min-height: 230px;
-    }
-
-    .project-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .project h3 {
-      margin: 0;
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
-    }
-
-    .project-type {
-      font-size: 0.72rem;
-      color: var(--muted-soft);
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line-soft);
-      padding: 6px 8px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .project p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .pill-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: auto;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px 8px;
-      border-radius: 8px;
-      border: 1px solid var(--line-soft);
-      background: rgba(255,255,255,0.02);
-      color: var(--muted-soft);
-      font-size: 0.72rem;
-      font-weight: 700;
-    }
-
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .project-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: var(--text);
-      padding: 9px 12px;
-      border-radius: 10px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      border: 1px solid var(--line-soft);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .skills-wrap {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .skill-card {
-      padding: 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line-soft);
-    }
-
-    .skill-card h3 {
-      margin: 0 0 12px;
-      font-size: 0.84rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .skill-list {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .skill-list span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 10px;
-      border-radius: 8px;
-      background: rgba(124, 140, 255, 0.08);
-      border: 1px solid rgba(124, 140, 255, 0.18);
-      color: var(--text);
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
-    .contact-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .contact-meta {
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .contact-meta strong {
-      color: var(--text);
-      font-size: 1.1rem;
-      display: block;
-      margin-bottom: 2px;
-      letter-spacing: -0.02em;
-    }
-
-    .contact-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .contact-links a {
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 11px;
-      border: 1px solid var(--line-soft);
-      background: rgba(255,255,255,0.02);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 0.8rem;
-    }
-
-    .contact-links svg {
-      width: 16px;
-      height: 16px;
-      display: block;
-    }
-
-    footer {
-      margin-top: 26px;
-      padding: 12px 4px 0;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.78rem;
-    }
-
-    @media (max-width: 960px) {
-      .hero {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .about-grid,
-      .projects-grid,
-      .skills-wrap {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .page-shell { padding-top: 22px; }
-      .hero,
-      .section { padding: 22px 18px; }
-      .hero-inner {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .avatar {
-        width: 82px;
-        height: 82px;
-        font-size: 1.6rem;
-      }
-      .contact-row {
-        align-items: flex-start;
-      }
-      .hero-actions {
-        width: 100%;
-      }
-      .btn {
-        flex: 1 1 auto;
-      }
-    }
+    /* small helper */
+    .muted{color:var(--muted)}
+    a.fade{color:var(--accent-2);text-decoration:none}
   </style>
 </head>
 <body>
-  <div class="container page-shell">
-    <header class="card hero" aria-label="Hero section">
-      <div class="hero-inner">
-        <div class="avatar" aria-label="Eslam initials">E</div>
-
-        <div class="title-wrap">
-          <div class="eyebrow">Available for work</div>
-          <h1>Eslam</h1>
-          <p class="subtitle">Flutter Developer • Backend Engineer • NestJS • Mobile Apps</p>
-
-          <div class="hero-actions">
-            <div class="chip-group" aria-label="Tech stack">
-              <span class="chip">Flutter</span>
-              <span class="chip">Dart</span>
-              <span class="chip">NestJS</span>
-              <span class="chip">TypeScript</span>
-              <span class="chip">Node.js</span>
-            </div>
-          </div>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">IS</div>
+        <div>
+          <h1>Islam Sayed</h1>
+          <p class="muted">Flutter Developer • Backend Engineer (NestJS)</p>
         </div>
       </div>
 
-      <div class="hero-actions" aria-label="Primary actions">
-        <a class="btn btn-primary" href="https://drive.google.com/file/d/1KrkuYuScKSnZoIOxjjlwfKean6Cqq-Fo/view?usp=sharing" target="_blank" rel="noreferrer">Download CV</a>
-        <a class="btn btn-secondary" href="https://github.com/eslam281" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn-outline">Get in touch</a>
+      </nav>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" onclick="toggleNav()">
+        ☰ Menu
+      </button>
     </header>
 
-    <main class="content">
-      <section class="card section" aria-labelledby="about-heading">
-        <div class="section-header">
-          <h2 id="about-heading">About Me</h2>
-          <span class="tag">Profile</span>
+    <main>
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-card">
+          <h2>Islam Sayed</h2>
+          <div class="title">Flutter Developer | Mobile Application Development</div>
+          <p class="muted" style="margin-top:12px">
+            Flutter developer with hands-on experience building and deploying cross-platform mobile apps and backend services. I build clean, maintainable mobile apps (Flutter & Dart) and RESTful backends (NestJS / Node).
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn" href="#projects">Featured projects</a>
+            <a class="btn-outline" href="mailto:aslamsydbdalzyzbry@gmail.com">Email</a>
+            <a class="btn-outline" href="https://github.com/eslam281" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn-outline" href="https://www.linkedin.com/in/islam-sayed-a2a8b4259" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+
+          <div style="margin-top:18px">
+            <strong class="muted">Availability:</strong> Immediately — Full-Time<br>
+            <strong class="muted">Location:</strong> Badrashine, Giza, Egypt
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+            <div class="chip">Flutter</div>
+            <div class="chip">Dart</div>
+            <div class="chip">NestJS</div>
+            <div class="chip">Clean Architecture</div>
+            <div class="chip">RAG AI Assistant</div>
+          </div>
         </div>
 
-        <div class="about-grid">
+        <aside class="profile" aria-labelledby="profile-title">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div class="avatar" aria-hidden="true">IS</div>
+          </div>
+
+          <div class="meta" style="width:100%">
+            <div class="row"><div><strong>Contact</strong></div> <div class="small">Military: Exempted</div></div>
+            <div class="row"><div class="small">aslamsydbdalzyzbry@gmail.com</div><div class="small">01064744978</div></div>
+            <div class="row"><div class="small">linkedin.com/in/islam-sayed-a2a8b4259</div><div class="small">github.com/eslam281</div></div>
+
+            <div style="margin-top:10px" class="links">
+              <a class="chip" href="https://play.google.com/store/apps/dev?id=6122016141032404367" target="_blank" rel="noopener">Play Store</a>
+              <a class="chip" href="https://credly.com/users/islam-sayed-boria" target="_blank" rel="noopener">Certifications</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="about-title">
+        <div class="section-head">
+          <h3 id="about-title">About Me</h3>
+          <p class="muted">Computer Science graduate (2026) — I build production-ready mobile apps and scalable backends.</p>
+        </div>
+
+        <div class="about">
           <div>
-            <p class="bio">I’m a Flutter developer and backend engineer focused on creating polished mobile experiences and reliable server-side systems. I enjoy building products that are efficient, user-friendly, and easy to maintain.</p>
-            <p class="bio">My work blends mobile app development with backend engineering, using Flutter for user interfaces and NestJS/TypeScript for APIs and service architecture. I care about clean code, scalable structures, and real-world product quality.</p>
+            <p>
+              I'm a Flutter Developer and Backend Engineer with practical experience building cross-platform apps and RESTful services. I focus on clean architecture, maintainable state management (BLoC / GetX), and integrating AI features (RAG) safely into mobile workflows. My projects span healthcare, e-commerce, and AI-assisted mobile tools.
+            </p>
+
+            <p><strong>Experience highlights</strong></p>
+            <ul style="color:var(--muted);margin:8px 0 0 18px;padding:0">
+              <li>Flutter Developer Training — Masa (Level 1 & 2): UI/UX, BLoC, GetX, Clean Architecture, REST API integrations.</li>
+              <li>Graduation project: EG-healthcare — Flutter app + AI assistant (RAG) for clinicians.</li>
+              <li>Personal projects: E-commerce multi-role apps, Islamic app (Hisn Muslim) with offline caching.</li>
+            </ul>
           </div>
 
-          <ul class="mini-list" aria-label="Highlights">
-            <li>Flutter & Dart app development</li>
-            <li>NestJS backend APIs & services</li>
-            <li>Google Play app deployment</li>
-            <li>Clean architecture and scalable code</li>
-          </ul>
+          <div>
+            <div style="margin-bottom:10px"><strong>Education</strong></div>
+            <div class="chip">Bachelor of Computer Science — Thebes Academy (Graduation 2026) — GPA: 3.45</div>
+
+            <div style="margin-top:12px"><strong>Languages</strong></div>
+            <div class="chip">Arabic — Native</div>
+            <div class="chip">English — Upper Intermediate (B1/B2)</div>
+          </div>
         </div>
       </section>
 
-      <section class="card section" id="projects" aria-labelledby="projects-heading">
-        <div class="section-header">
-          <h2 id="projects-heading">Featured Projects</h2>
-          <span class="tag">Portfolio</span>
+      <!-- PROJECTS -->
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="section-head">
+          <h3 id="projects-title">Featured Projects</h3>
+          <p class="muted">Selected mobile apps and backend work — short descriptions and tech stack.</p>
         </div>
 
-        <div class="projects-grid">
-          <article class="project" aria-label="MyNote project">
-            <div class="project-top">
-              <h3>MyNote</h3>
-              <span class="project-type">Flutter App</span>
-            </div>
-            <p>A notes and productivity app designed for a smooth, privacy-focused experience with local handling, structured note workflows, and clean mobile UX.</p>
-            <div class="pill-row">
-              <span class="pill">Flutter</span>
-              <span class="pill">Dart</span>
-              <span class="pill">SQLite</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/eslam281/mynote" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-          </article>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div>
+            <h4 style="margin-top:0">Mobile Apps</h4>
+            <div class="projects-grid" role="list">
+              <article class="project" role="listitem">
+                <h4>EG-healthcare (Graduation Project)</h4>
+                <div class="small muted">Flutter • Dart • BLoC • Clean Architecture • Firebase • REST API • RAG AI Assistant</div>
+                <p class="muted" style="margin-top:8px">End-to-end Flutter app implementing Clean Architecture and BLoC. Integrated a secure RAG (Retrieval-Augmented Generation) assistant to help clinicians query patient history and get contextual answers to support rapid decision-making.</p>
+                <div class="tags">
+                  <span class="tag">Graduation</span><span class="tag">AI Assistant</span><span class="tag">Firebase</span>
+                </div>
+                <div style="margin-top:10px">
+                  <a class="fade" href="https://github.com/eslam281/eghealthcare" target="_blank">Source →</a>
+                </div>
+              </article>
 
-          <article class="project" aria-label="EG Healthcare project">
-            <div class="project-top">
-              <h3>EG Healthcare</h3>
-              <span class="project-type">Flutter App</span>
-            </div>
-            <p>Healthcare-focused application with a responsive layout, accessible mobile design, and a strong emphasis on clean usability for a patient-facing experience.</p>
-            <div class="pill-row">
-              <span class="pill">Flutter</span>
-              <span class="pill">Healthcare</span>
-              <span class="pill">Responsive UI</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/eslam281/eghealthcare" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-          </article>
+              <article class="project" role="listitem">
+                <h4>E-Commerce Store (Personal)</h4>
+                <div class="small muted">Flutter • GetX • PHP • MySQL • REST API</div>
+                <p class="muted" style="margin-top:8px">Multi-role platform (User, Admin, Delivery) built as three mobile apps: product browsing, order/payment flows, admin content management, and delivery tracking.</p>
+                <div class="tags"><span class="tag">GetX</span><span class="tag">Multi-role</span><span class="tag">Payments</span></div>
+                <div style="margin-top:10px">
+                  <a class="fade" href="https://github.com/eslam281/ecommerce" target="_blank">Source →</a>
+                </div>
+              </article>
 
-          <article class="project" aria-label="ES28 app project">
-            <div class="project-top">
-              <h3>ES28</h3>
-              <span class="project-type">Android App</span>
-            </div>
-            <p>Android application published on Google Play with a user-focused experience built around mobile-first design and practical product needs.</p>
-            <div class="pill-row">
-              <span class="pill">Android</span>
-              <span class="pill">Flutter</span>
-              <span class="pill">Play Store</span>
-            </div>
-            <div class="project-links">
-              <a href="https://play.google.com/store/apps/details?id=com.Eslam28_1.es28" target="_blank" rel="noreferrer">Play Store</a>
-            </div>
-          </article>
-
-          <article class="project" aria-label="E-commerce backend project">
-            <div class="project-top">
-              <h3>E-Commerce Platform</h3>
-              <span class="project-type">Backend</span>
-            </div>
-            <p>Backend-focused project built for practical commerce workflows, supporting structured APIs, service logic, and maintainable application design.</p>
-            <div class="pill-row">
-              <span class="pill">NestJS</span>
-              <span class="pill">TypeScript</span>
-              <span class="pill">API Design</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/eslam281/ecommerce" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="card section" aria-labelledby="skills-heading">
-        <div class="section-header">
-          <h2 id="skills-heading">Skills</h2>
-          <span class="tag">Core Stack</span>
-        </div>
-
-        <div class="skills-wrap">
-          <div class="skill-card">
-            <h3>Mobile</h3>
-            <div class="skill-list">
-              <span>Flutter</span>
-              <span>Dart</span>
-              <span>UI/UX</span>
-              <span>Responsive Design</span>
+              <article class="project" role="listitem">
+                <h4>Hisn Muslim</h4>
+                <div class="small muted">Flutter • GetX • Hive • REST API</div>
+                <p class="muted" style="margin-top:8px">Islamic app delivering authentic supplications and monthly prayer schedules with heavy offline support and efficient caching (reduced API calls by ~97% via monthly caching).</p>
+                <div class="tags"><span class="tag">Offline</span><span class="tag">Play Store</span><span class="tag">Hive</span></div>
+                <div style="margin-top:10px">
+                  <a class="fade" href="https://play.google.com/store/apps/details?id=com.Eslam28_1.es28" target="_blank">Play Store →</a>
+                </div>
+              </article>
             </div>
           </div>
 
-          <div class="skill-card">
-            <h3>Backend</h3>
-            <div class="skill-list">
-              <span>NestJS</span>
-              <span>TypeScript</span>
-              <span>REST APIs</span>
-              <span>Node.js</span>
-            </div>
-          </div>
+          <div>
+            <h4 style="margin-top:0">Backend & Tools</h4>
+            <div class="projects-grid" role="list">
+              <article class="project" role="listitem">
+                <h4>EG-healthcare Backend (collab)</h4>
+                <div class="small muted">Node.js • NestJS • MySQL • REST APIs • Auth</div>
+                <p class="muted" style="margin-top:8px">Backend services supporting authentication, patient records, and secure API endpoints powering the EG-healthcare mobile app. Built with NestJS and a modular approach for maintainability.</p>
+                <div class="tags"><span class="tag">NestJS</span><span class="tag">MySQL</span></div>
+                <div style="margin-top:10px">
+                  <a class="fade" href="https://github.com/eslam281/eghealthcare" target="_blank">Backend Repo →</a>
+                </div>
+              </article>
 
-          <div class="skill-card">
-            <h3>Data & Infra</h3>
-            <div class="skill-list">
-              <span>SQLite</span>
-              <span>PostgreSQL</span>
-              <span>Docker</span>
-              <span>CI/CD</span>
+              <article class="project" role="listitem">
+                <h4>Utilities & Dev Tools</h4>
+                <div class="small muted">Git • Postman • XAMPP • CI basics</div>
+                <p class="muted" style="margin-top:8px">Tooling, REST debugging, local stacks (XAMPP), and source control best practices to support rapid development and safe deployments.</p>
+                <div class="tags"><span class="tag">Postman</span><span class="tag">Git</span></div>
+              </article>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="card section" aria-labelledby="contact-heading">
-        <div class="section-header">
-          <h2 id="contact-heading">Contact</h2>
-          <span class="tag">Connect</span>
+      <!-- SKILLS -->
+      <section id="skills" aria-labelledby="skills-title">
+        <div class="section-head">
+          <h3 id="skills-title">Skills</h3>
+          <p class="muted">Core technologies, state management, architectures, and tools I use daily.</p>
         </div>
 
-        <div class="contact-row">
-          <div class="contact-meta">
-            <strong>Eslam</strong>
-            Flutter Developer & Backend Engineer
-            <div style="margin-top: 10px; color: var(--muted-soft);">
-              <a href="mailto:aslamsydbdalzyzbry@gmail.com" style="color: var(--text); text-decoration: none; font-weight: 600;">aslamsydbdalzyzbry@gmail.com</a>
+        <div style="display:grid;grid-template-columns:1fr 360px;gap:16px">
+          <div>
+            <div style="margin-bottom:12px">
+              <strong>Technologies & Tools</strong>
             </div>
-            <div style="margin-top: 6px; color: var(--muted-soft);">
-              <a href="tel:01064744978" style="color: var(--text); text-decoration: none; font-weight: 600;">01064744978</a>
+            <div class="skills-grid" aria-hidden="false">
+              <div class="skill"><h5>Flutter & Dart</h5><div class="meter"><i style="width:92%"></i></div></div>
+              <div class="skill"><h5>BLoC & GetX</h5><div class="meter"><i style="width:85%"></i></div></div>
+              <div class="skill"><h5>Clean Architecture</h5><div class="meter"><i style="width:80%"></i></div></div>
+              <div class="skill"><h5>REST APIs</h5><div class="meter"><i style="width:86%"></i></div></div>
+              <div class="skill"><h5>Firebase & Hive</h5><div class="meter"><i style="width:78%"></i></div></div>
+              <div class="skill"><h5>NestJS / Backend</h5><div class="meter"><i style="width:72%"></i></div></div>
             </div>
           </div>
 
-          <div class="contact-links">
-            <a href="https://github.com/eslam281" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.18c0 4.49 2.87 8.31 6.84 9.66.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.17-1.1-1.48-1.1-1.48-.9-.62.07-.61.07-.61 1 .07 1.54 1.05 1.54 1.05.89 1.56 2.34 1.11 2.9.85.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.13-4.56-5.03 0-1.11.39-2.02 1.03-2.73-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.04A9.2 9.2 0 0112 6.8c.85 0 1.71.11 2.5.31 1.9-1.31 2.74-1.04 2.74-1.04.55 1.41.2 2.45.1 2.71.64.71 1.03 1.62 1.03 2.73 0 3.91-2.34 4.77-4.57 5.03.36.32.69.95.69 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.58.69.48A10.2 10.2 0 0022 12.18C22 6.58 17.52 2 12 2z"/></svg>
-              GitHub
-            </a>
+          <div>
+            <div style="margin-bottom:12px"><strong>Fundamentals & Soft Skills</strong></div>
+            <ul style="color:var(--muted);margin:0 0 8px 18px">
+              <li>OOP, Data Structures & Algorithms</li>
+              <li>Unit, Widget & Integration Testing</li>
+              <li>Problem Solving • Continuous Learning • Agile Mindset</li>
+            </ul>
 
-            <a href="https://www.linkedin.com/in/islam-sayed-a2a8b4259" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.4a1.56 1.56 0 0 1 0 3.1ZM5.5 10.2h2.9V18H5.5v-7.8Zm5 0h2.78v1.06h.04c.39-.73 1.35-1.5 2.78-1.5 2.97 0 3.52 1.95 3.52 4.49V18h-2.9v-16.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.09V18h-2.92V10.2Z"/></svg>
-              LinkedIn
-            </a>
-
-            <a href="https://play.google.com/store/apps/dev?id=6122016141032404367" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2C7.03 2 3 6.03 3 11v2c0 4.97 4.03 9 9 9s9-4.03 9-9v-2c0-4.97-4.03-9-9-9zm-1 5.5c0-.55.45-1 1-1s1 .45 1 1v5.2c0 .55-.45 1-1 1s-1-.45-1-1V7.5zm0 9.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm6.5-9.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0z"/></svg>
-              Google Play
-            </a>
-
-            <a href="https://drive.google.com/file/d/1KrkuYuScKSnZoIOxjjlwfKean6Cqq-Fo/view?usp=sharing" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 3.5a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42l2.3 2.3V4.5a1 1 0 0 1 1-1Zm-6 13a1 1 0 0 1 1 1v.5h10v-.5a1 1 0 1 1 2 0V18a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-1.5a1 1 0 0 1 1-1Z"/></svg>
-              CV
-            </a>
+            <div style="margin-top:14px">
+              <strong>Tools</strong>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+                <div class="chip">Git</div>
+                <div class="chip">Postman</div>
+                <div class="chip">XAMPP</div>
+                <div class="chip">MySQL</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      <!-- CONTACT -->
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="section-head">
+          <h3 id="contact-title">Contact</h3>
+          <p class="muted">Let's connect — email, GitHub or LinkedIn.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start">
+          <div>
+            <div class="contact-list">
+              <div class="contact-item">
+                <div style="min-width:110px" class="small muted">Email</div>
+                <div><a href="mailto:aslamsydbdalzyzbry@gmail.com">aslamsydbdalzyzbry@gmail.com</a></div>
+              </div>
+
+              <div class="contact-item">
+                <div style="min-width:110px" class="small muted">Phone</div>
+                <div><a href="tel:+201064744978">+20 106 474 4978</a></div>
+              </div>
+
+              <div class="contact-item">
+                <div style="min-width:110px" class="small muted">GitHub</div>
+                <div><a href="https://github.com/eslam281" target="_blank" rel="noopener">github.com/eslam281</a></div>
+              </div>
+
+              <div class="contact-item">
+                <div style="min-width:110px" class="small muted">LinkedIn</div>
+                <div><a href="https://www.linkedin.com/in/islam-sayed-a2a8b4259" target="_blank" rel="noopener">linkedin.com/in/islam-sayed-a2a8b4259</a></div>
+              </div>
+
+              <div class="contact-item">
+                <div style="min-width:110px" class="small muted">Location</div>
+                <div>Badrashine, Giza, Egypt</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="border-radius:12px;background:rgba(255,255,255,0.02);padding:14px">
+              <div style="font-weight:700">Quick summary</div>
+              <div class="muted small" style="margin-top:8px">Availability: Immediately — Full-Time<br>Military status: Exempted</div>
+
+              <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+                <a class="btn-outline" href="https://github.com/eslam281" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn-outline" href="https://www.linkedin.com/in/islam-sayed-a2a8b4259" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="btn-outline" href="https://play.google.com/store/apps/dev?id=6122016141032404367" target="_blank" rel="noopener">Play Store</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>© <strong>Islam Sayed</strong> — Flutter Developer • Backend Engineer</div>
+        <div style="margin-top:8px" class="small muted">Resume and certificates available on request. </div>
+      </footer>
     </main>
-
-    <footer>© <span id="year"></span> Eslam — Flutter Developer & Backend Engineer</footer>
   </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleNav(){
+      const nav = document.querySelector('nav');
+      const btn = document.querySelector('.nav-toggle');
+      if(!nav) return;
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      if(expanded){
+        nav.style.display = '';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.position = 'absolute';
+        nav.style.right = '28px';
+        nav.style.top = '80px';
+        nav.style.background = 'rgba(2,6,23,0.7)';
+        nav.style.padding = '14px';
+        nav.style.borderRadius = '12px';
+        nav.style.backdropFilter = 'blur(8px)';
+      }
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+      });
+    });
   </script>
 </body>
 </html>
